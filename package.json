@@ -1,33 +1,33 @@
 {
-  "name": "website-builder",
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "NODE_ENV=development webpack serve --mode development --config webpack.config.cjs",
-    "build": "NODE_ENV=production npm run build:pages && webpack --mode production --config webpack.config.cjs",
-    "build:pages": "node scripts/build-pages.js",
-    "build:app": "NODE_ENV=production webpack --mode production --config webpack.config.cjs"
-  },
-  "type": "module",
-  "license": "Apache-2.0",
-  "author": "Proximify Inc.",
-  "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-router-dom": "^7.1.5",
-    "gray-matter": "^4.0.3",
-    "unified": "^10.1.2",
-    "remark-parse": "^10.0.2",
-    "remark-gfm": "^3.0.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.26.7",
-    "@babel/preset-react": "^7.26.3",
-    "babel-loader": "^9.2.1",
-    "copy-webpack-plugin": "^12.0.2",
-    "dotenv-webpack": "^8.0.1",
-    "html-webpack-plugin": "^5.6.3",
-    "webpack": "^5.97.1",
-    "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.0"
-  }
+	"name": "website-builder",
+	"version": "1.0.0",
+	"scripts": {
+		"dev": "NODE_ENV=development webpack serve --mode development --config webpack.config.cjs",
+		"build": "NODE_ENV=production npm run build:pages && webpack --mode production --config webpack.config.cjs",
+		"build:pages": "node scripts/build-pages.js",
+		"build:app": "NODE_ENV=production webpack --mode production --config webpack.config.cjs"
+	},
+	"type": "module",
+	"license": "Apache-2.0",
+	"author": "Proximify Inc.",
+	"dependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-router-dom": "^6.4.2",
+		"gray-matter": "^4.0.3",
+		"unified": "^10.1.2",
+		"remark-parse": "^10.0.2",
+		"remark-gfm": "^3.0.1"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.26.7",
+		"@babel/preset-react": "^7.26.3",
+		"babel-loader": "^9.2.1",
+		"copy-webpack-plugin": "^12.0.2",
+		"dotenv-webpack": "^8.0.1",
+		"html-webpack-plugin": "^5.6.3",
+		"webpack": "^5.97.1",
+		"webpack-cli": "^6.0.1",
+		"webpack-dev-server": "^5.2.0"
+	}
 }

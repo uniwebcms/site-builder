@@ -78,15 +78,24 @@ module.exports = (env, argv) => {
 					WebsiteRemote: `WebsiteRemote@${COMPONENTS_MODULE_URL}/remoteEntry.js`,
 				},
 				shared: {
-					react: {
-						singleton: true,
-						eager: true,
-						requiredVersion: false,
-					},
+					// react: {
+					// 	singleton: true,
+					// 	eager: true,
+					// 	requiredVersion: false,
+					// },
+					// "react-dom": {
+					// 	singleton: true,
+					// 	eager: true,
+					// 	requiredVersion: false,
+					// },
+					react: { singleton: true, requiredVersion: "^18.2.0" },
 					"react-dom": {
 						singleton: true,
-						eager: true,
-						requiredVersion: false,
+						requiredVersion: "^18.2.0",
+					},
+					"react-router-dom": {
+						singleton: true,
+						requiredVersion: "^6.4.2",
 					},
 				},
 			}),
