@@ -2,10 +2,10 @@
   "name": "website-builder",
   "version": "1.0.0",
   "scripts": {
-    "dev": "webpack serve --mode development --config webpack.config.cjs",
-    "build": "npm run build:pages && webpack --mode production --config webpack.config.cjs",
-    "build:pages": "node --experimental-json-modules scripts/build-pages.js",
-    "build:app": "webpack --mode production --config webpack.config.cjs"
+    "dev": "NODE_ENV=development webpack serve --mode development --config webpack.config.cjs",
+    "build": "NODE_ENV=production npm run build:pages && webpack --mode production --config webpack.config.cjs",
+    "build:pages": "node scripts/build-pages.js",
+    "build:app": "NODE_ENV=production webpack --mode production --config webpack.config.cjs"
   },
   "type": "module",
   "license": "Apache-2.0",
