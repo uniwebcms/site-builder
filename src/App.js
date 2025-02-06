@@ -7,6 +7,12 @@ let COMPONENT_LIBRARY = null;
 // TEMP CODE
 window.uniweb ??= {
 	hasWebsiteRemote: () => true,
+	activeWebsite: {
+		getRoutingComponents: () => ({
+			useParams,
+		}),
+	},
+	getServices: () => ({ parseLinksInArticle: () => {} }),
 };
 
 const PageRenderer = () => {
@@ -38,14 +44,20 @@ const PageRenderer = () => {
 
 	if (!pageData) return <div>Page not found</div>;
 
-	// console.log("COMPONENT_LIBRARY", COMPONENT_LIBRARY);
-
 	return (
 		<div className="page">
 			{pageData.map((section) => {
-				const Component = COMPONENT_LIBRARY[section.component];
+				// TEMP: Fallback to List component
+				const Component =
+					COMPONENT_LIBRARY[section.component] ||
+					COMPONENT_LIBRARY["List"];
+
 				return (
-					<Component {...section.props} content={section.content} />
+					<Component
+						key={section.id}
+						{...section.props}
+						content={section.content}
+					/>
 				);
 			})}
 		</div>
@@ -62,8 +74,7 @@ export default function App() {
 		import("WebsiteRemote/widgets")
 			.then((module) => {
 				if (module?.default) {
-					console.log("LOADED", module);
-					COMPONENT_LIBRARY = module;
+					COMPONENT_LIBRARY = module.default.default;
 
 					setModuleLoaded(true);
 				} else {
