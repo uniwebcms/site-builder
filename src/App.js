@@ -68,8 +68,6 @@ export default function App() {
 	const [moduleLoaded, setModuleLoaded] = useState(false);
 
 	useEffect(() => {
-		console.log("LOADING...");
-
 		// Import the module "widgets" from the remote whose alias is 'WebsiteRemote'.
 		import("WebsiteRemote/widgets")
 			.then((module) => {
