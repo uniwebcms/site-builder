@@ -1,71 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route, useParams } from "react-router-dom";
-import allContent from "./content.json";
-
-let COMPONENT_LIBRARY = null;
-
-// TEMP CODE
-window.uniweb ??= {
-	hasWebsiteRemote: () => true,
-	activeWebsite: {
-		getRoutingComponents: () => ({
-			useParams,
-		}),
-	},
-	getServices: () => ({ parseLinksInArticle: () => {} }),
-};
-
-const PageRenderer = () => {
-	const { pagePath = "index" } = useParams();
-	const pageData = allContent[pagePath];
-
-	if (!pageData) return <div>Page not found</div>;
-
-	return (
-		<div className="page">
-			{pageData.map((section) => {
-				// TEMP: Fallback to List component
-				const Component =
-					COMPONENT_LIBRARY[section.component] ||
-					COMPONENT_LIBRARY["List"];
-
-				return (
-					<Component
-						key={section.id}
-						{...section.props}
-						content={section.content}
-					/>
-				);
-			})}
-		</div>
-	);
-};
+import React, { useState, useEffect } from 'react';
+import WebsiteRenderer from './components/WebsiteRenderer.js';
+import { Routes, Route } from 'react-router-dom';
 
 export default function App() {
-	const [moduleLoaded, setModuleLoaded] = useState(false);
+    const [moduleLoaded, setModuleLoaded] = useState(false);
 
-	useEffect(() => {
-		// Import the module "widgets" from the remote whose alias is 'WebsiteRemote'.
-		import("WebsiteRemote/widgets")
-			.then((module) => {
-				if (module?.default) {
-					COMPONENT_LIBRARY = module.default.default;
+    // Load remote components to uniweb
+    useEffect(() => {
+        const loadAllComponents = () => {
+            try {
+                import('WebsiteRemote/widgets').then((module) => {
+                    // Handle double default wrapping issue because CommonJS been import into ES6 module
+                    const components = module?.default?.default || module?.default;
 
-					setModuleLoaded(true);
-				} else {
-					console.warn("Website module not found");
-				}
-			})
-			.catch((error) => {
-				console.error("Failed to load Uniweb website remote:", error);
-			});
-	}, []);
+                    if (components) {
+                        uniweb.setRemoteComponents(components);
 
-	if (!moduleLoaded) return null;
+                        setModuleLoaded(true);
+                    }
+                });
+            } catch (error) {
+                console.error('Failed to load remote module:', error);
+                setIsLoading(false);
+            }
+        };
 
-	return (
-		<Routes>
-			<Route path="/:pagePath*" element={<PageRenderer />} />
-		</Routes>
-	);
+        loadAllComponents();
+    }, []);
+
+    if (!moduleLoaded) return <div>Loading...</div>;
+
+    return (
+        <Routes>
+            <Route path='/' element={<WebsiteRenderer />} />
+        </Routes>
+    );
 }
