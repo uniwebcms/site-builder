@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, useParams } from "react-router-dom";
 import allContent from "./content.json";
 
@@ -17,29 +17,6 @@ window.uniweb ??= {
 
 const PageRenderer = () => {
 	const { pagePath = "index" } = useParams();
-	// const [pageData, setPageData] = useState(null);
-	// const [loading, setLoading] = useState(true);
-
-	// useEffect(() => {
-	// 	const loadPageData = async () => {
-	// 		try {
-	// 			// const response = await fetch("/content.json");
-	// 			// const allContent = await response.json();
-	// 			const allContent = pageContent;
-	// 			console.log(allContent);
-	// 			setPageData(allContent[pagePath] || null);
-	// 		} catch (error) {
-	// 			console.error("Error loading page data:", error);
-	// 		} finally {
-	// 			setLoading(false);
-	// 		}
-	// 	};
-
-	// 	loadPageData();
-	// }, [pagePath]);
-
-	// if (loading) return <div>Loading page...</div>;
-
 	const pageData = allContent[pagePath];
 
 	if (!pageData) return <div>Page not found</div>;
