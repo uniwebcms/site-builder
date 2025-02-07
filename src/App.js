@@ -2,37 +2,18 @@ import React, { useState, useEffect } from 'react';
 import WebsiteRenderer from './components/WebsiteRenderer.js';
 import { Routes, Route } from 'react-router-dom';
 
-export default function App() {
+export default function App({ modulePromise }) {
     const [moduleLoaded, setModuleLoaded] = useState(false);
 
-    // Load remote components to uniweb
     useEffect(() => {
-        const loadAllComponents = () => {
-            try {
-                import('WebsiteRemote/widgets').then((module) => {
-                    // Handle double default wrapping issue because CommonJS been import into ES6 module
-                    const components = module?.default?.default || module?.default;
-
-                    if (components) {
-                        uniweb.setRemoteComponents(components);
-
-                        setModuleLoaded(true);
-                    }
-                });
-            } catch (error) {
-                console.error('Failed to load remote module:', error);
-                setIsLoading(false);
-            }
-        };
-
-        loadAllComponents();
+        modulePromise.then(setModuleLoaded);
     }, []);
 
-    if (!moduleLoaded) return <div>Loading...</div>;
+    if (!moduleLoaded) return null;
 
     return (
         <Routes>
-            <Route path='/' element={<WebsiteRenderer />} />
+            <Route path="/" element={<WebsiteRenderer />} />
         </Routes>
     );
 }
