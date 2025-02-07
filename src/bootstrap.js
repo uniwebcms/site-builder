@@ -6,6 +6,14 @@ import Link from './components/Link.js';
 import SafeHtml from './components/SafeHtml.js';
 import App from './App.js';
 
+const modulePromise = import('WebsiteRemote/widgets')
+    .then((module) => {
+        // Handle double default wrapping issue when CommonJS is imported into ES6 module
+        uniweb.setRemoteComponents(module?.default?.default || module?.default);
+        return true;
+    })
+    .catch((error) => console.error('Failed to load module:', error));
+
 const container = document.getElementById('root');
 const root = createRoot(container);
 
@@ -15,11 +23,11 @@ uniweb.routingComponents = {
     SafeHtml,
     useNavigate,
     useParams,
-    useLocation
+    useLocation,
 };
 
 root.render(
     <BrowserRouter>
-        <App />
+        <App modulePromise={modulePromise} />
     </BrowserRouter>
 );
