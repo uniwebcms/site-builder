@@ -86,7 +86,7 @@ module.exports = (env, argv) => {
             new ModuleFederationPlugin({
                 name: 'site-builder',
                 remotes: {
-                    WebsiteRemote: `WebsiteRemote@${COMPONENTS_MODULE_URL}/remoteEntry.js`
+                    RemoteModule: `WebsiteRemote@${COMPONENTS_MODULE_URL}/remoteEntry.js`
                 },
                 shared: {
                     react: { singleton: true, requiredVersion: '^18.2.0' },

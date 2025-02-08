@@ -1,4 +1,4 @@
 import configData from '../public/example.json';
 import { initRTE } from 'uniweb-re';
 
-initRTE(import('WebsiteRemote/widgets'), configData);
+initRTE(import('RemoteModule/widgets'), configData);
