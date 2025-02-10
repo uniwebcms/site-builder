@@ -11,6 +11,7 @@
     "license": "Apache-2.0",
     "author": "Proximify Inc.",
     "dependencies": {
+        "@uniwebcms/site-content-collector": "^1.0.3",
         "@uniwebcms/uniweb-rte": "^1.1.0",
         "css-loader": "^6.8.1",
         "gray-matter": "^4.0.3",
