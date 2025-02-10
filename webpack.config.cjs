@@ -4,8 +4,10 @@ const CopyPlugin = require('copy-webpack-plugin');
 const dotenv = require('dotenv');
 const webpack = require('webpack');
 const { ModuleFederationPlugin } = webpack.container;
+const SiteContentPlugin = require('@uniwebcms/site-content-collector/webpack');
 
 dotenv.config({ path: './.env.local' });
+dotenv.config({ path: './.env.dev' });
 dotenv.config({ path: './.env' });
 
 module.exports = (env, argv) => {
@@ -71,6 +73,12 @@ module.exports = (env, argv) => {
         plugins: [
             new HtmlWebpackPlugin({
                 template: './public/index.html'
+            }),
+            new SiteContentPlugin({
+                sourcePath: './content/pages', // Required: path to content directory
+                injectToHtml: true, // Optional: inject into HTML (requires html-webpack-plugin)
+                variableName: '__SITE_CONTENT__', // Optional: global variable name when injecting
+                filename: 'site-content.json' // Optional: output filename when not injecting
             }),
             new CopyPlugin({
                 patterns: [

@@ -4,6 +4,7 @@
     "scripts": {
         "dev": "NODE_ENV=development webpack serve --mode development --config webpack.config.cjs",
         "build": "NODE_ENV=production npm run build:pages && webpack --mode production --config webpack.config.cjs",
+        "start": "NODE_ENV=production webpack --mode production --config webpack.config.cjs",
         "build:pages": "node scripts/build-pages.js",
         "build:app": "NODE_ENV=production webpack --mode production --config webpack.config.cjs"
     },
@@ -11,8 +12,8 @@
     "license": "Apache-2.0",
     "author": "Proximify Inc.",
     "dependencies": {
-        "@uniwebcms/site-content-collector": "^1.1.0",
-        "@uniwebcms/uniweb-rte": "^1.1.0",
+        "@uniwebcms/site-content-collector": "^1.2.0",
+        "@uniwebcms/uniweb-rte": "^1.1.2",
         "css-loader": "^6.8.1",
         "gray-matter": "^4.0.3",
         "react": "^18.2.0",
