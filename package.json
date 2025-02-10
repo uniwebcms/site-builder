@@ -1,6 +1,6 @@
 {
     "name": "@uniwebcms/website-builder",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "scripts": {
         "dev": "NODE_ENV=development webpack serve --mode development --config webpack.config.cjs",
         "build": "NODE_ENV=production npm run build:pages && webpack --mode production --config webpack.config.cjs",
