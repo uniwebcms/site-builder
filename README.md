@@ -1,30 +1,36 @@
 # Uniweb Site Starter
 
-A streamlined template for creating content-driven websites powered by Uniweb runtime modules. Perfect for developers testing modules, teams prototyping sites, or anyone wanting to self-host a Uniweb-compatible website.
+A streamlined template for creating content-driven websites powered by Uniweb runtime modules. Perfect for testing component libraries, prototyping sites, and exploring the Uniweb ecosystem.
 
 ## 🎯 What is This?
 
-This starter template helps you create websites using the Uniweb ecosystem:
+This starter template provides a lightweight environment for working with Uniweb component libraries:
 
--   Write content in simple markdown files
--   Style and structure using any Uniweb-compatible component module
--   Preview and test locally using [Uniweb RTE](https://github.com/link-to-rte)
--   Deploy anywhere as a static site
+-   Test component libraries during development
+-   Create prototype sites with structured content
+-   Explore Uniweb's content-first approach
+-   Build static sites powered by Uniweb runtime modules
 
 ## ⚡️ Quick Start
 
+**Option 1: Use as Template (Recommended)**
+
+1. Click the green "Use this template" button above
+2. Name your repository and create it
+3. Clone your new repository locally
+4. Install dependencies: `npm install`
+5. Link a component module: `npm run use <module-url>`
+6. Start developing: `npm run dev`
+
+**Option 2: Direct Clone**
+
 ```bash
-# Create a new site
-npx create-uniweb-site my-site
+git clone https://github.com/uniwebcms/site-starter my-site
 cd my-site
-
-# Install dependencies
+rm -rf .git
+git init
 npm install
-
-# Link to a component module (required)
-npm run use https://example.com/my-module
-
-# Start development server
+npm run use <module-url>
 npm run dev
 ```
 
@@ -36,16 +42,16 @@ Your website content lives in markdown files, organized in a simple folder struc
 
 ```
 my-site/
-├── pages/           # Your website content
-│   ├── home/       # Home page
-│   │   ├── page.yml          # Page settings
-│   │   ├── 1-hero.md        # First section
-│   │   └── 2-features.md    # Second section
-│   └── about/      # Additional pages
+├── pages/                  # Your website content
+│   ├── home/               # Home page
+│   │   ├── page.yml        # Page settings
+│   │   ├── 1-hero.md       # First section
+│   │   └── 2-features.md   # Second section
+│   └── about/              # Additional pages
 │       ├── page.yml
 │       └── 1-main.md
-└── assets/         # Images and files
-    └── images/     # Image assets
+└── assets/                 # Images and files
+    └── images/             # Image assets
 ```
 
 ### Writing Pages
@@ -54,29 +60,59 @@ my-site/
 2. Add numbered markdown files for each section
 3. (Optional) Add `page.yml` for page settings
 
-Each markdown file specifies a component and its properties:
+Each markdown file configures how its content should be displayed:
 
 ```markdown
 ---
+# Component selection
 component: Hero
+
+# System-wide settings (handled by runtime engine)
+theme: light
+background: assets/images/hero.jpg
+spacing: large
+animation: fade-in
+
+# Component-specific properties
 props:
-    title: Welcome to Our Lab
-    style: gradient
-    background: light
+    layout: compact
+    showCta: true
 ---
+
+### Eyebrow heading
 
 # Welcome to Our Research Lab
 
 Discover our groundbreaking work in...
 ```
 
-### Adding Images
+The front matter (between `---`) contains:
 
-1. Place images in `assets/images/`
-2. Reference them in your markdown:
+-   `component`: Which component to use
+-   System settings: Common features like `theme`, `background`, `spacing`, handled automatically by the runtime engine
+-   `props`: Properties specific to the chosen component
+
+### Adding Images and Videos
+
+1. Place media files in `assets/images/`
+2. Reference them in your content:
 
 ```markdown
+# Images
+
 ![Lab Team](/assets/images/team.jpg)
+
+# Local Video
+
+@[video](/assets/images/demo.mp4)
+
+# YouTube
+
+@[video](https://www.youtube.com/watch?v=VIDEO_ID)
+
+# Vimeo
+
+@[video](https://vimeo.com/VIDEO_ID)
 ```
 
 ## 🔗 Component Modules
@@ -114,7 +150,7 @@ npm run preview
 
 ### Section Groups
 
-Organize complex content with section groups:
+For complex content, create related sections:
 
 ```
 2-features.md         # Parent section
@@ -135,27 +171,25 @@ meta:
     description: Explore our latest research projects
 ```
 
-## 🌐 Uniweb Ecosystem
+## 🌐 Part of the Uniweb Ecosystem
 
-This starter is part of the Uniweb family:
-
--   **Uniweb Site Starter** (this project)
-
-    -   Quick static site creation
-    -   Module testing and development
-    -   Self-hosted projects
-
--   [**Uniweb RTE**](link)
-
-    -   Runtime environment
-    -   Local development
-    -   Self-hosting capabilities
+This starter works with the broader Uniweb ecosystem:
 
 -   [**Uniweb CMS**](https://uniwebcms.com)
-    -   Full-featured CMS
-    -   Team collaboration
-    -   Content management
-    -   Enterprise features
+
+    -   Full-featured content management system
+    -   Dynamic data and multilingual workflows
+    -   Team collaboration features
+    -   Built-in search and infrastructure
+    -   Enterprise-ready deployment
+
+-   **Uniweb Runtime Modules**
+    -   Reusable component libraries
+    -   Instant updates across sites
+    -   Consistent design systems
+    -   Professional development tools
+
+For production websites that need dynamic data, team workflows, or enterprise features, [Uniweb CMS](https://uniwebcms.com) provides a complete solution. This starter template is ideal for component library development, prototyping, and exploring the Uniweb approach to content management.
 
 ## 🚀 Deployment
 
