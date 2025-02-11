@@ -1,4 +1,3 @@
-import configData from '../public/example.json';
 import { initRTE } from '@uniwebcms/uniweb-rte';
 
-initRTE(import('RemoteModule/widgets'), { configData });
+initRTE(import('RemoteModule/widgets'), { development: true });

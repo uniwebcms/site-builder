@@ -1,5 +1,5 @@
 ---
-component: Hero
+component: Header
 props:
     layout: centered
     background: ./images/hero-bg.jpg
