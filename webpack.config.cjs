@@ -1,30 +1,29 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const dotenv = require('dotenv');
 const webpack = require('webpack');
 const { ModuleFederationPlugin } = webpack.container;
 const SiteContentPlugin = require('@uniwebcms/site-content-collector/webpack');
+const { loadSiteConfig } = require('@uniwebcms/site-content-collector');
 
-dotenv.config({ path: './.env.local' });
-dotenv.config({ path: './.env.dev' });
-dotenv.config({ path: './.env' });
-
-module.exports = (env, argv) => {
+module.exports = async (env, argv) => {
     const isProduction = argv.mode === 'production';
     const mode = isProduction ? 'production' : 'development';
+    const rootDir = __dirname;
+    const serverPort = parseInt(argv.port) || 3000;
 
-    const COMPONENTS_MODULE_URL = process.env.COMPONENTS_MODULE_URL;
+    const config = await loadSiteConfig(rootDir);
+    console.log('Remote module URL:', config.components.moduleUrl);
 
-    if (!COMPONENTS_MODULE_URL) {
-        throw new Error('COMPONENTS_MODULE_URL is required. Please provide it in .env');
+    if (!config.components.moduleUrl) {
+        throw new Error('A remote module URL is required. Please provide it in site.yml');
     }
 
     return {
         mode,
         entry: './src/index.js',
         output: {
-            path: path.resolve(__dirname, 'dist'),
+            path: path.resolve(rootDir, 'dist'),
             filename: '[name].[contenthash].js',
             publicPath: 'auto',
             clean: true
@@ -83,8 +82,8 @@ module.exports = (env, argv) => {
             new CopyPlugin({
                 patterns: [
                     {
-                        from: path.resolve(__dirname, 'public'), // Source folder
-                        to: path.resolve(__dirname, 'dist'), // Destination folder
+                        from: path.resolve(rootDir, 'public'), // Source folder
+                        to: path.resolve(rootDir, 'dist'), // Destination folder
                         globOptions: {
                             ignore: ['**/index.html'] // ✅ Ignore index.html
                         }
@@ -94,7 +93,7 @@ module.exports = (env, argv) => {
             new ModuleFederationPlugin({
                 name: 'site-builder',
                 remotes: {
-                    RemoteModule: `WebsiteRemote@${COMPONENTS_MODULE_URL}/remoteEntry.js`
+                    RemoteModule: `WebsiteRemote@${config.components.moduleUrl}/remoteEntry.js`
                 },
                 shared: {
                     react: { singleton: true, requiredVersion: '^18.2.0' },
@@ -112,9 +111,9 @@ module.exports = (env, argv) => {
         devServer: {
             historyApiFallback: true,
             static: {
-                directory: path.join(__dirname, 'dist')
+                directory: path.join(rootDir, 'dist')
             },
-            port: 3000
+            port: serverPort
             // proxy: [
             //     {
             //         context: ['/content.json', '/assets'],

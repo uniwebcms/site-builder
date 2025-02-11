@@ -38,20 +38,63 @@ Visit `http://localhost:3000` to see your site in action!
 
 ## 📝 Creating Content
 
+### Page Types
+
+The site supports several types of pages with special prefixes:
+
+1. **Regular Pages** (e.g., `home`, `about`)
+
+    - Create content specific to that page
+    - Can opt out of global elements via settings
+
+2. **Global Pages** (prefixed with `@`)
+
+    - `@header/` - Site-wide header/navigation
+    - `@footer/` - Site-wide footer
+    - `@left/` - Left sidebar/panel
+    - `@right/` - Right sidebar/panel
+    - Content appears on all pages unless disabled
+
+3. **Hidden Pages** (prefixed with `_`)
+    - Pages starting with underscore (e.g., `_drafts/`) are ignored during processing
+    - Useful for work in progress or archived content
+    - Example: `_drafts/`, `_archive/`, `_temp/`
+
+Each page can have multiple sections and its own settings:
+
+```yaml
+# page.yml example
+title: About Us
+layout:
+    header: false # Opt out of global header
+    leftPanel: true # Include left panel
+    rightPanel: false # No right panel
+```
+
 Your website content lives in markdown files, organized in a simple folder structure:
 
 ```
 my-site/
-├── pages/                  # Your website content
-│   ├── home/               # Home page
-│   │   ├── page.yml        # Page settings
-│   │   ├── 1-hero.md       # First section
-│   │   └── 2-features.md   # Second section
-│   └── about/              # Additional pages
-│       ├── page.yml
-│       └── 1-main.md
-└── assets/                 # Images and files
-    └── images/             # Image assets
+├── pages/              # Your website content
+│   ├── @header/       # Global header
+│   │   ├── page.yml
+│   │   └── 1-nav.md
+│   ├── @footer/       # Global footer
+│   │   └── 1-links.md
+│   ├── home/          # Home page
+│   │   ├── page.yml
+│   │   ├── 1-hero.md
+│   │   └── 2-features.md
+│   ├── about/         # Regular page
+│   │   ├── page.yml
+│   │   └── 1-main.md
+│   └── _drafts/       # Hidden from processing
+│       ├── new-page/
+│       └── archive/
+└── public/            # Static assets
+    ├── index.html
+    ├── img/
+    └── video/
 ```
 
 ### Writing Pages
@@ -92,19 +135,18 @@ The front matter (between `---`) contains:
 -   System settings: Common features like `theme`, `background`, `spacing`, handled automatically by the runtime engine
 -   `props`: Properties specific to the chosen component
 
-### Adding Images and Videos
+### Adding Static Assets
 
-1. Place media files in `assets/images/`
-2. Reference them in your content:
+Place your static files in the `public` folder:
 
 ```markdown
 # Images
 
-![Lab Team](/assets/images/team.jpg)
+![Lab Team](/img/team.jpg)
 
 # Local Video
 
-@[video](/assets/images/demo.mp4)
+@[video](/video/demo.mp4)
 
 # YouTube
 
@@ -114,6 +156,15 @@ The front matter (between `---`) contains:
 
 @[video](https://vimeo.com/VIDEO_ID)
 ```
+
+The `public` folder can contain any static assets:
+
+-   `img/` - Images used in your content
+-   `video/` - Local video files
+-   `favicon.ico` - Site favicon
+-   Other assets like fonts, documents, etc.
+
+All files in `public` are copied to the root of your built site, maintaining their folder structure.
 
 ## 🔗 Component Modules
 
