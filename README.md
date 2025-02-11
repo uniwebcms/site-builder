@@ -14,15 +14,25 @@ This starter template helps you create websites using the Uniweb ecosystem:
 ## ⚡️ Quick Start
 
 ```bash
+# Create a new site
 npx create-uniweb-site my-site
 cd my-site
+
+# Install dependencies
 npm install
+
+# Link to a component module (required)
+npm run use https://example.com/my-module
+
+# Start development server
 npm run dev
 ```
 
 Visit `http://localhost:3000` to see your site in action!
 
-## 📁 Project Structure
+## 📝 Creating Content
+
+Your website content lives in markdown files, organized in a simple folder structure:
 
 ```
 my-site/
@@ -35,76 +45,76 @@ my-site/
 │       ├── page.yml
 │       └── 1-main.md
 └── assets/         # Images and files
-    └── images/
+    └── images/     # Image assets
 ```
 
-### Pages & Sections
+### Writing Pages
 
-Each page is a folder under `pages/`:
+1. Create a folder under `pages/` for each page
+2. Add numbered markdown files for each section
+3. (Optional) Add `page.yml` for page settings
 
--   The `home` folder becomes your landing page
--   Each markdown file is a section of content
--   Sections are numbered to control their order (e.g., `1-hero.md`, `2-features.md`)
--   A `page.yml` file can configure page-level settings
-
-### Writing Content
-
-Pages are built from markdown files that specify which component to use:
+Each markdown file specifies a component and its properties:
 
 ```markdown
 ---
 component: Hero
 props:
-    title: Welcome
+    title: Welcome to Our Lab
     style: gradient
+    background: light
 ---
 
-# Welcome to Our Site
+# Welcome to Our Research Lab
 
-Main content goes here...
+Discover our groundbreaking work in...
 ```
 
-### Using Images
+### Adding Images
 
-Place images in the `assets/images/` directory:
+1. Place images in `assets/images/`
+2. Reference them in your markdown:
 
 ```markdown
-![Team Photo](/assets/images/team.jpg)
+![Lab Team](/assets/images/team.jpg)
 ```
 
-## 🔗 Working with Components
+## 🔗 Component Modules
 
-Your site's look and feel comes from a Uniweb runtime module - a collection of pre-built React components. You can:
+Your site's appearance comes from a Uniweb runtime module - a collection of pre-built React components. You can:
 
--   Use any public module
--   Test with a local module during development
--   Create your own module (see our [module development guide](link-to-guide))
+-   Use any public module:
 
-To link a module:
+    ```bash
+    npm run use https://example.com/my-module
+    ```
+
+-   Test with a local module:
+
+    ```bash
+    npm run use http://localhost:5001
+    ```
+
+-   [Create your own module](link-to-guide) for custom designs
+
+## 🛠 Development Workflow
 
 ```bash
-# Use a public module
-npm run use https://example.com/my-module
-
-# Or use a local module
-npm run use http://localhost:5001
-```
-
-## 🛠 Development
-
-```bash
-# Start development server
+# Start development server with hot reload
 npm run dev
 
 # Build for production
 npm run build
+
+# Preview production build
+npm run preview
 ```
 
 ## 📚 Advanced Features
 
 ### Section Groups
 
-For complex content, you can create related sections:
+Organize complex content with section groups:
 
 ```
 2-features.md         # Parent section
@@ -112,22 +122,66 @@ For complex content, you can create related sections:
 2.2-feature2.md      # Second subsection
 ```
 
-## 🌐 Part of the Uniweb Ecosystem
+### Page Configuration
 
-This starter template works with:
+Configure page-level settings in `page.yml`:
 
--   [Uniweb RTE](link) - The runtime environment that powers your site
--   [Uniweb CMS](https://uniwebcms.com) - Full-featured CMS for team-based content management
--   Any Uniweb-compatible component module
+```yaml
+title: Our Research
+menu:
+    label: Research
+    order: 2
+meta:
+    description: Explore our latest research projects
+```
 
-### When to Use What?
+## 🌐 Uniweb Ecosystem
 
--   **This Starter**: Perfect for developers testing modules, static sites, and self-hosted projects
--   **Uniweb CMS**: Best for teams, content management, and full-featured web platforms
--   **Uniweb RTE**: The engine that powers both, available for local development and self-hosting
+This starter is part of the Uniweb family:
 
-## 🤝 Contributing
+-   **Uniweb Site Starter** (this project)
 
+    -   Quick static site creation
+    -   Module testing and development
+    -   Self-hosted projects
+
+-   [**Uniweb RTE**](link)
+
+    -   Runtime environment
+    -   Local development
+    -   Self-hosting capabilities
+
+-   [**Uniweb CMS**](https://uniwebcms.com)
+    -   Full-featured CMS
+    -   Team collaboration
+    -   Content management
+    -   Enterprise features
+
+## 🚀 Deployment
+
+Your site builds to static files that can be hosted anywhere:
+
+```bash
+# Build the site
+npm run build
+
+# Output in 'dist' folder:
+dist/
+├── index.html
+├── assets/
+└── ...
+```
+
+Deploy to your preferred platform:
+
+-   GitHub Pages
+-   Netlify
+-   Vercel
+-   Any static host
+
+## 🤝 Community
+
+-   📚 [Documentation](https://link-to-docs)
 -   🌟 [GitHub Repo](https://github.com/uniweb/site-starter)
 -   🐛 [Report Issues](https://github.com/uniweb/site-starter/issues)
 -   💡 [Feature Requests](https://github.com/uniweb/site-starter/discussions)
