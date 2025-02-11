@@ -6,10 +6,10 @@ A streamlined template for creating content-driven websites powered by Uniweb ru
 
 This starter template provides a lightweight environment for working with Uniweb component libraries:
 
--   Test component libraries during development
--   Create prototype sites with structured content
--   Explore Uniweb's content-first approach
--   Build static sites powered by Uniweb runtime modules
+- Test component libraries during development
+- Create prototype sites with structured content
+- Explore Uniweb's content-first approach
+- Build static sites powered by Uniweb runtime modules
 
 ## ⚡️ Quick Start
 
@@ -44,21 +44,21 @@ The site supports several types of pages with special prefixes:
 
 1. **Regular Pages** (e.g., `home`, `about`)
 
-    - Create content specific to that page
-    - Can opt out of global elements via settings
+   - Create content specific to that page
+   - Can opt out of global elements via settings
 
 2. **Global Pages** (prefixed with `@`)
 
-    - `@header/` - Site-wide header/navigation
-    - `@footer/` - Site-wide footer
-    - `@left/` - Left sidebar/panel
-    - `@right/` - Right sidebar/panel
-    - Content appears on all pages unless disabled
+   - `@header/` - Site-wide header/navigation
+   - `@footer/` - Site-wide footer
+   - `@left/` - Left sidebar/panel
+   - `@right/` - Right sidebar/panel
+   - Content appears on all pages unless disabled
 
 3. **Hidden Pages** (prefixed with `_`)
-    - Pages starting with underscore (e.g., `_drafts/`) are ignored during processing
-    - Useful for work in progress or archived content
-    - Example: `_drafts/`, `_archive/`, `_temp/`
+   - Pages starting with underscore (e.g., `_drafts/`) are ignored during processing
+   - Useful for work in progress or archived content
+   - Example: `_drafts/`, `_archive/`, `_temp/`
 
 Each page can have multiple sections and its own settings:
 
@@ -66,9 +66,9 @@ Each page can have multiple sections and its own settings:
 # page.yml example
 title: About Us
 layout:
-    header: false # Opt out of global header
-    leftPanel: true # Include left panel
-    rightPanel: false # No right panel
+  header: false # Opt out of global header
+  leftPanel: true # Include left panel
+  rightPanel: false # No right panel
 ```
 
 Your website content lives in markdown files, organized in a simple folder structure:
@@ -118,8 +118,8 @@ animation: fade-in
 
 # Component-specific properties
 props:
-    layout: compact
-    showCta: true
+  layout: compact
+  showCta: true
 ---
 
 ### Eyebrow heading
@@ -131,9 +131,9 @@ Discover our groundbreaking work in...
 
 The front matter (between `---`) contains:
 
--   `component`: Which component to use
--   System settings: Common features like `theme`, `background`, `spacing`, handled automatically by the runtime engine
--   `props`: Properties specific to the chosen component
+- `component`: Which component to use
+- System settings: Common features like `theme`, `background`, `spacing`, handled automatically by the runtime engine
+- `props`: Properties specific to the chosen component
 
 ### Adding Static Assets
 
@@ -159,10 +159,10 @@ Place your static files in the `public` folder:
 
 The `public` folder can contain any static assets:
 
--   `img/` - Images used in your content
--   `video/` - Local video files
--   `favicon.ico` - Site favicon
--   Other assets like fonts, documents, etc.
+- `img/` - Images used in your content
+- `video/` - Local video files
+- `favicon.ico` - Site favicon
+- Other assets like fonts, documents, etc.
 
 All files in `public` are copied to the root of your built site, maintaining their folder structure.
 
@@ -170,19 +170,19 @@ All files in `public` are copied to the root of your built site, maintaining the
 
 Your site's appearance comes from a Uniweb runtime module - a collection of pre-built React components. You can:
 
--   Use any public module:
+- Use any public module:
 
-    ```bash
-    npm run use https://example.com/my-module
-    ```
+  ```bash
+  npm run use https://example.com/my-module
+  ```
 
--   Test with a local module:
+- Test with a local module:
 
-    ```bash
-    npm run use http://localhost:5001
-    ```
+  ```bash
+  npm run use http://localhost:5001
+  ```
 
--   [Create your own module](link-to-guide) for custom designs
+- [Create your own module](https://github.com/uniwebcms/component-library-template) for custom designs
 
 ## 🛠 Development Workflow
 
@@ -216,29 +216,29 @@ Configure page-level settings in `page.yml`:
 ```yaml
 title: Our Research
 menu:
-    label: Research
-    order: 2
+  label: Research
+  order: 2
 meta:
-    description: Explore our latest research projects
+  description: Explore our latest research projects
 ```
 
 ## 🌐 Part of the Uniweb Ecosystem
 
 This starter works with the broader Uniweb ecosystem:
 
--   [**Uniweb CMS**](https://uniwebcms.com)
+- [**Uniweb CMS**](https://uniwebcms.com)
 
-    -   Full-featured content management system
-    -   Dynamic data and multilingual workflows
-    -   Team collaboration features
-    -   Built-in search and infrastructure
-    -   Enterprise-ready deployment
+  - Full-featured content management system
+  - Dynamic data and multilingual workflows
+  - Team collaboration features
+  - Built-in search and infrastructure
+  - Enterprise-ready deployment
 
--   **Uniweb Runtime Modules**
-    -   Reusable component libraries
-    -   Instant updates across sites
-    -   Consistent design systems
-    -   Professional development tools
+- **Uniweb Runtime Modules**
+  - Reusable component libraries
+  - Instant updates across sites
+  - Consistent design systems
+  - Professional development tools
 
 For production websites that need dynamic data, team workflows, or enterprise features, [Uniweb CMS](https://uniwebcms.com) provides a complete solution. This starter template is ideal for component library development, prototyping, and exploring the Uniweb approach to content management.
 
@@ -259,17 +259,17 @@ dist/
 
 Deploy to your preferred platform:
 
--   GitHub Pages
--   Netlify
--   Vercel
--   Any static host
+- GitHub Pages
+- Netlify
+- Vercel
+- Any static host
 
 ## 🤝 Community
 
--   📚 [Documentation](https://link-to-docs)
--   🌟 [GitHub Repo](https://github.com/uniweb/site-starter)
--   🐛 [Report Issues](https://github.com/uniweb/site-starter/issues)
--   💡 [Feature Requests](https://github.com/uniweb/site-starter/discussions)
+- 📚 [Documentation](https://link-to-docs)
+- 🌟 [GitHub Repo](https://github.com/uniweb/site-starter)
+- 🐛 [Report Issues](https://github.com/uniweb/site-starter/issues)
+- 💡 [Feature Requests](https://github.com/uniweb/site-starter/discussions)
 
 ---
 
