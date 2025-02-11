@@ -1,10 +1,10 @@
 ---
 component: Header
 props:
-    layout: centered
-    background: ./images/hero-bg.jpg
-    textColor: light
-    height: full
+  layout: centered
+  background: ./images/hero-bg.jpg
+  textColor: light
+  height: full
 ---
 
 # Welcome to Our Platform
