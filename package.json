@@ -10,7 +10,10 @@
   "author": "Proximify Inc.",
   "dependencies": {
     "@uniwebcms/site-content-collector": "^1.4.0",
-    "@uniwebcms/uniweb-rte": "^1.1.4"
+    "@uniwebcms/uniweb-rte": "^1.1.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.26.3",
