@@ -23,14 +23,14 @@ Your website's capabilities come from two parts:
    - Provides sophisticated features and interactions
    - Loaded automatically at runtime
 
-This separation of content and functionality is powered by Uniweb's runtime module system. Each component library is packaged as a runtime module that can be loaded dynamically by any Uniweb site. This architecture enables powerful workflows:
+This separation of content and functionality is powered by [Uniweb's runtime module system](https://github.com/uniwebcms/component-library-template). Each component library is packaged as a runtime module that can be loaded dynamically by any Uniweb site. This architecture enables powerful workflows:
 
 - Content teams can work independently of design changes
 - Component updates instantly propagate to all sites using them
 - Sites can switch design systems while keeping their content unchanged
 - Developers can maintain and evolve components separately from content
 
-Everything is powered by the Uniweb Runtime Environment (RTE), an open-source engine that handles routing, data management, and component loading.
+Everything is powered by the [Uniweb Runtime Environment (RTE)](https://github.com/uniwebcms/uniweb-rte), an open-source engine that handles routing, data management, and component loading.
 
 ## Why Choose This Approach?
 
