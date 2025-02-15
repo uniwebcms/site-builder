@@ -1,276 +1,156 @@
 # Uniweb Site Starter
 
-A streamlined template for creating content-driven websites powered by Uniweb runtime modules. Perfect for testing component libraries, prototyping sites, and exploring the Uniweb ecosystem.
+This template creates websites that load their components from runtime modules—packages of components that are loaded and executed at runtime rather than bundled with your site. It's designed to work alongside our [component library template](https://github.com/uniwebcms/component-library-template), providing a complete solution for developing and testing Uniweb sites.
 
-## 🎯 What is This?
+> **Looking for a quick start?** Check out our pre-configured starters for [documentation sites](link) and [marketing sites](link) that come with ready-to-use content and open-source component libraries.
 
-This starter template provides a lightweight environment for working with Uniweb component libraries:
+## Understanding Runtime Modules and Content Separation
 
-- Test component libraries during development
-- Create prototype sites with structured content
-- Explore Uniweb's content-first approach
-- Build static sites powered by Uniweb runtime modules
+In the Uniweb ecosystem, every website is built from two key parts:
 
-## ⚡️ Quick Start
+1. A **content repository** (like this template) that contains:
 
-**Option 1: Use as Template (Recommended)**
+   - Your website's content in markdown files
+   - Static assets like images and documents
+   - Minimal setup code to connect with a runtime module
 
-1. Click the green "Use this template" button above
-2. Name your repository and create it
-3. Clone your new repository locally
-4. Install dependencies: `npm install`
-5. Link a component module: `npm run use <module-url>`
-6. Start developing: `npm run dev`
+2. A **runtime module** (created with our component library template) that contains:
+   - React components that render your content
+   - Complete design system implementation
+   - All interactive functionality
 
-**Option 2: Direct Clone**
+Each component library is packaged as a runtime module that can be loaded dynamically by any Uniweb site. This architecture enables powerful workflows:
 
-```bash
-git clone https://github.com/uniwebcms/site-starter my-site
-cd my-site
-rm -rf .git
-git init
-npm install
-npm run use <module-url>
-npm run dev
-```
+- Content teams can work independently of design changes
+- Component updates instantly propagate to all sites using them
+- Sites can switch design systems while keeping their content unchanged
+- Developers can maintain and evolve components separately from content
 
-Visit `http://localhost:3000` to see your site in action!
+Everything is powered by the Uniweb Runtime Environment (RTE), an open-source engine that handles routing, data management, and component loading.
 
-## 📝 Creating Content
+## Why Choose This Approach?
 
-### Page Types
+The Uniweb Site Starter excels in several scenarios:
 
-The site supports several types of pages with special prefixes:
+- **Component Library Development**: If you're building Uniweb components, this provides the ideal testing environment. Create and test your libraries with real content before deploying them to production sites.
 
-1. **Regular Pages** (e.g., `home`, `about`)
+- **Content-Focused Teams**: For teams who prefer working with markdown and Git, this provides a streamlined way to manage content without the overhead of a full CMS. Perfect for documentation sites, marketing pages, or any content-driven project.
 
-   - Create content specific to that page
-   - Can opt out of global elements via settings
+- **Technical Testing and Prototyping**: Whether you're evaluating Uniweb for a project or prototyping a new design system, this starter gives you hands-on experience with the core concepts.
 
-2. **Global Pages** (prefixed with `@`)
+While this starter is perfect for markdown-based projects, teams needing visual editing tools, collaboration features, or advanced content management will love our [Uniweb CMS](https://uniwebcms.com). The CMS provides a complete no-code solution with translation management, team workflows, and enterprise features.
 
-   - `@header/` - Site-wide header/navigation
-   - `@footer/` - Site-wide footer
-   - `@left/` - Left sidebar/panel
-   - `@right/` - Right sidebar/panel
-   - Content appears on all pages unless disabled
+## Component Libraries
 
-3. **Hidden Pages** (prefixed with `_`)
-   - Pages starting with underscore (e.g., `_drafts/`) are ignored during processing
-   - Useful for work in progress or archived content
-   - Example: `_drafts/`, `_archive/`, `_temp/`
+Component libraries define how your content appears and behaves. They provide the building blocks—from simple text components to complex interactive features—that bring your content to life. With Uniweb, you can:
 
-Each page can have multiple sections and its own settings:
+- Use any public component library
+- Create your own using our [component library template](https://github.com/uniwebcms/component-library-template)
+- Use commercial libraries from the Uniweb marketplace
+- Switch libraries without modifying your content
 
-```yaml
-# page.yml example
-title: About Us
-layout:
-  header: false # Opt out of global header
-  leftPanel: true # Include left panel
-  rightPanel: false # No right panel
-```
+## Getting Started
 
-Your website content lives in markdown files, organized in a simple folder structure:
+Before you begin, you'll need:
+
+- A component library URL (public or local development)
+- Node.js and npm installed
+- Basic familiarity with markdown and Git
+
+Create your first Uniweb site:
+
+1. Create your site repository:
+
+   ```bash
+   # Use this template (recommended)
+   Click the "Use this template" button above
+
+   # Or clone directly
+   git clone https://github.com/uniwebcms/site-starter my-site
+   cd my-site
+   rm -rf .git
+   git init
+   ```
+
+2. Set up your development environment:
+   ```bash
+   npm install
+   npm run use <library-url>  # Link a component library
+   npm run dev               # Start development server
+   ```
+
+Visit `http://localhost:3000` to see your site in action! The development server includes hot reloading, so you'll see your content changes immediately.
+
+## Content Organization
+
+Your website's content is structured through markdown files, organized in a clear folder hierarchy:
 
 ```
 my-site/
-├── pages/              # Your website content
-│   ├── @header/       # Global header
-│   │   ├── page.yml
-│   │   └── 1-nav.md
+├── pages/
+│   ├── home/          # Your home page
+│   │   ├── page.yml   # Page settings
+│   │   ├── 1-hero.md  # Hero section
+│   │   └── 2-main.md  # Main content
+│   ├── about/         # About page
+│   ├── @header/       # Global header (appears on all pages)
 │   ├── @footer/       # Global footer
-│   │   └── 1-links.md
-│   ├── home/          # Home page
-│   │   ├── page.yml
-│   │   ├── 1-hero.md
-│   │   └── 2-features.md
-│   ├── about/         # Regular page
-│   │   ├── page.yml
-│   │   └── 1-main.md
-│   └── _drafts/       # Hidden from processing
-│       ├── new-page/
-│       └── archive/
+│   └── _drafts/       # Hidden during build
 └── public/            # Static assets
-    ├── index.html
-    ├── img/
-    └── video/
+    └── images/
 ```
 
-### Writing Pages
-
-1. Create a folder under `pages/` for each page
-2. Add numbered markdown files for each section
-3. (Optional) Add `page.yml` for page settings
-
-Each markdown file configures how its content should be displayed:
+Each markdown file defines both its content and how it should be displayed:
 
 ```markdown
 ---
-# Component selection
 component: Hero
-
-# System-wide settings (handled by runtime engine)
 theme: light
-background: assets/images/hero.jpg
-spacing: large
-animation: fade-in
-
-# Component-specific properties
 props:
-  layout: compact
-  showCta: true
+  layout: centered
 ---
 
-### Eyebrow heading
+# Welcome to Our Site
 
-# Welcome to Our Research Lab
-
-Discover our groundbreaking work in...
+We believe in making website development both powerful and enjoyable...
 ```
 
-The front matter (between `---`) contains:
+## Deployment
 
-- `component`: Which component to use
-- System settings: Common features like `theme`, `background`, `spacing`, handled automatically by the runtime engine
-- `props`: Properties specific to the chosen component
-
-### Adding Static Assets
-
-Place your static files in the `public` folder:
-
-```markdown
-# Images
-
-![Lab Team](/img/team.jpg)
-
-# Local Video
-
-@[video](/video/demo.mp4)
-
-# YouTube
-
-@[video](https://www.youtube.com/watch?v=VIDEO_ID)
-
-# Vimeo
-
-@[video](https://vimeo.com/VIDEO_ID)
-```
-
-The `public` folder can contain any static assets:
-
-- `img/` - Images used in your content
-- `video/` - Local video files
-- `favicon.ico` - Site favicon
-- Other assets like fonts, documents, etc.
-
-All files in `public` are copied to the root of your built site, maintaining their folder structure.
-
-## 🔗 Component Modules
-
-Your site's appearance comes from a Uniweb runtime module - a collection of pre-built React components. You can:
-
-- Use any public module:
-
-  ```bash
-  npm run use https://example.com/my-module
-  ```
-
-- Test with a local module:
-
-  ```bash
-  npm run use http://localhost:5001
-  ```
-
-- [Create your own module](https://github.com/uniwebcms/component-library-template) for custom designs
-
-## 🛠 Development Workflow
+Build your site for production:
 
 ```bash
-# Start development server with hot reload
-npm run dev
-
-# Build for production
 npm run build
-
-# Preview production build
-npm run preview
 ```
 
-## 📚 Advanced Features
-
-### Section Groups
-
-For complex content, create related sections:
-
-```
-2-features.md         # Parent section
-2.1-feature1.md      # First subsection
-2.2-feature2.md      # Second subsection
-```
-
-### Page Configuration
-
-Configure page-level settings in `page.yml`:
-
-```yaml
-title: Our Research
-menu:
-  label: Research
-  order: 2
-meta:
-  description: Explore our latest research projects
-```
-
-## 🌐 Part of the Uniweb Ecosystem
-
-This starter works with the broader Uniweb ecosystem:
-
-- [**Uniweb CMS**](https://uniwebcms.com)
-
-  - Full-featured content management system
-  - Dynamic data and multilingual workflows
-  - Team collaboration features
-  - Built-in search and infrastructure
-  - Enterprise-ready deployment
-
-- **Uniweb Runtime Modules**
-  - Reusable component libraries
-  - Instant updates across sites
-  - Consistent design systems
-  - Professional development tools
-
-For production websites that need dynamic data, team workflows, or enterprise features, [Uniweb CMS](https://uniwebcms.com) provides a complete solution. This starter template is ideal for component library development, prototyping, and exploring the Uniweb approach to content management.
-
-## 🚀 Deployment
-
-Your site builds to static files that can be hosted anywhere:
-
-```bash
-# Build the site
-npm run build
-
-# Output in 'dist' folder:
-dist/
-├── index.html
-├── assets/
-└── ...
-```
-
-Deploy to your preferred platform:
+The `dist` folder contains everything needed to deploy your site. Host it anywhere:
 
 - GitHub Pages
 - Netlify
 - Vercel
-- Any static host
+- Any static hosting service
 
-## 🤝 Community
+## Technical Details
 
-- 📚 [Documentation](https://link-to-docs)
-- 🌟 [GitHub Repo](https://github.com/uniweb/site-starter)
+For detailed information about page types, configuration options, and advanced features, see our [Technical Guide](docs/technical.md).
+
+## Join the Community
+
+We're building something special, and we'd love for you to be part of it:
+
+- 📘 [Documentation](https://link-to-docs)
+- 🌟 [GitHub Repository](https://github.com/uniweb/site-starter)
 - 🐛 [Report Issues](https://github.com/uniweb/site-starter/issues)
 - 💡 [Feature Requests](https://github.com/uniweb/site-starter/discussions)
 
+## License
+
+This starter repository is licensed under GPL-3.0-or-later.
+
+You are free to use and modify this repository, but if you distribute it (as a template or software package), you must also release your modifications under the same license.
+
+Note: Websites created using this starter are NOT considered distributions and do not need to be licensed under GPL.
+
 ---
 
-Built with ❤️ by the Uniweb Community
+Built with ❤️ by the Uniweb Community. Want to learn more about what's possible with Uniweb? Visit us at [uniwebcms.com](https://uniwebcms.com).

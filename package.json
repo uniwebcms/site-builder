@@ -6,7 +6,7 @@
     "build": "webpack --mode production --config webpack.config.cjs"
   },
   "type": "module",
-  "license": "Apache-2.0",
+  "license": "GPL-3.0-or-later",
   "author": "Proximify Inc.",
   "dependencies": {
     "@uniwebcms/site-content-collector": "^1.4.0",
