@@ -1,5 +1,6 @@
 {
   "name": "@uniwebcms/site-builder",
+  "description": "Create sophisticated websites with just markdown files by connecting your content to pre-built component libraries. Part of the open-source Uniweb framework.",
   "version": "1.0.1",
   "scripts": {
     "dev": "webpack serve --mode development --config webpack.config.cjs",
