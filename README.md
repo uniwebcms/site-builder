@@ -1,25 +1,29 @@
 # Uniweb Site Starter
 
-This template creates websites that load their components from runtime modules—packages of components that are loaded and executed at runtime rather than bundled with your site. It's designed to work alongside our [component library template](https://github.com/uniwebcms/component-library-template), providing a complete solution for developing and testing Uniweb sites.
+Create sophisticated websites using just markdown files. This template lets you build anything from documentation to interactive marketing sites without writing any code - by connecting your content to pre-built component libraries that handle all the technical complexity.
+
+Each markdown file in your site can tap into advanced React components through simple configuration, giving you the power of modern web development without the coding overhead.
 
 > **Looking for a quick start?** Check out our pre-configured starters for [documentation sites](link) and [marketing sites](link) that come with ready-to-use content and open-source component libraries.
 
-## Understanding Runtime Modules and Content Separation
+## How It Works
 
-In the Uniweb ecosystem, every website is built from two key parts:
+Your website's capabilities come from two parts:
 
-1. A **content repository** (like this template) that contains:
+1. **Your Content** (using this template):
 
-   - Your website's content in markdown files
+   - Simple markdown files that define your content
+   - Easy-to-understand front matter for configuration
    - Static assets like images and documents
-   - Minimal setup code to connect with a runtime module
+   - No coding required
 
-2. A **runtime module** (created with our component library template) that contains:
-   - React components that render your content
-   - Complete design system implementation
-   - All interactive functionality
+2. **A Component Library**:
+   - Pre-built collection of advanced React components
+   - Handles all technical implementation
+   - Provides sophisticated features and interactions
+   - Loaded automatically at runtime
 
-Each component library is packaged as a runtime module that can be loaded dynamically by any Uniweb site. This architecture enables powerful workflows:
+This separation of content and functionality is powered by Uniweb's runtime module system. Each component library is packaged as a runtime module that can be loaded dynamically by any Uniweb site. This architecture enables powerful workflows:
 
 - Content teams can work independently of design changes
 - Component updates instantly propagate to all sites using them
@@ -34,7 +38,7 @@ The Uniweb Site Starter excels in several scenarios:
 
 - **Component Library Development**: If you're building Uniweb components, this provides the ideal testing environment. Create and test your libraries with real content before deploying them to production sites.
 
-- **Content-Focused Teams**: For teams who prefer working with markdown and Git, this provides a streamlined way to manage content without the overhead of a full CMS. Perfect for documentation sites, marketing pages, or any content-driven project.
+- **Content-Focused Teams**: For teams who prefer working directly with markdown and Git, this provides a streamlined way to manage content using familiar developer tools.
 
 - **Technical Testing and Prototyping**: Whether you're evaluating Uniweb for a project or prototyping a new design system, this starter gives you hands-on experience with the core concepts.
 
