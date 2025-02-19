@@ -10,7 +10,7 @@
     "license": "GPL-3.0-or-later",
     "author": "Proximify Inc.",
     "dependencies": {
-        "@uniwebcms/site-content-collector": "^2.2.5",
+        "@uniwebcms/site-content-collector": "^2.3.0",
         "@uniwebcms/uniweb-rte": "^1.1.7",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",

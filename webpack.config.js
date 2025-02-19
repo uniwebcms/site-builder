@@ -2,7 +2,7 @@
  * For configuration details and customization options, see:
  * https://github.com/uniwebcms/site-content-collector/blob/main/docs/webpack-config.md
  */
-import { getConfig } from "@uniwebcms/site-content-collector/webpack";
+import { configHost } from "@uniwebcms/site-content-collector";
 import webpack from "webpack";
 
-export default async (_, argv) => getConfig(webpack, argv, import.meta.url);
+export default async (_, argv) => configHost(webpack, argv, import.meta.url);
