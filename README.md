@@ -122,10 +122,8 @@ The included development environment provides everything you need:
 - 🔄 Hot reloading for instant feedback
 - 🖼️ Asset management
 - 🎮 Auto build and deploy via GitHub Actions
-- 🔗 CMS connection to test with live sites
+- 🔗 CMS connection to test with dynamic data
 - 📝 Comprehensive documentation website
-
-Advanced developers can connect their local development environment to a live Uniweb CMS site, enabling testing with real-world content and dynamic data. Learn more in our [Advanced Testing Guide](docs/advanced-testing.md).
 
 Learn more in our [Development Guide](docs/development-guide.md).
 

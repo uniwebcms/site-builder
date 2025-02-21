@@ -144,6 +144,8 @@ yarn uniweb watch
 
 ### Remote Testing
 
+Connect your local development environment to a live Uniweb CMS site, and test with multilingual content and dynamic data.
+
 ```bash
 # Create tunnel for remote access
 yarn uniweb start --tunnel
@@ -152,12 +154,7 @@ yarn uniweb start --tunnel
 yarn uniweb url
 ```
 
-### Device Testing
-
-- Desktop preview
-- Mobile preview
-- Tablet preview
-- Custom viewport sizes
+Learn more in our [Advanced Testing Guide](docs/advanced-testing.md).
 
 ## Advanced Tools
 
@@ -237,13 +234,6 @@ yarn uniweb build --modules module1 --sites site1
 - Test responsive behavior
 - Test performance
 - Test error cases
-
-### Performance Tips
-
-- Use code splitting
-- Optimize assets
-- Monitor bundle size
-- Enable caching
 
 ## Troubleshooting
 
