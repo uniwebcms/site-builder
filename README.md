@@ -1,160 +1,243 @@
-# Uniweb Site Starter
+# Uniweb Framework Starter
 
-Create sophisticated websites using just markdown files. This template lets you build anything from documentation to interactive marketing sites without writing any code - by connecting your content to pre-built component libraries that handle all the technical complexity.
+[![Discord](https://img.shields.io/discord/1234567890?color=7289da&label=Discord&logo=discord&logoColor=white)](https://discord.gg/uniweb)
+[![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/uniwebcms/framework-starter?style=social)](https://github.com/uniwebcms/framework-starter)
 
-Each markdown file in your site can tap into advanced React components through simple configuration, giving you the power of modern web development without the coding overhead.
+Create websites and runtime modules with a unique architecture that separates content from code. Build once, update everywhere, and maintain with ease.
 
-> **Looking for a quick start?** Check out our pre-configured starters for [documentation sites](link) and [marketing sites](link) that come with ready-to-use content and open-source component libraries.
+```
+┌─ Your Content ─────┐     ┌─ Runtime Module ────┐
+│  • Pages           │     │  • Components       │
+│  • Sections        │ ←── │  • Layouts          │
+│  • Assets          │     │  • Features         │
+└────────────────────┘     └─────────────────────┘
+```
 
-## How It Works
+**What is Uniweb?**
 
-Your website's capabilities come from two parts:
+- A framework for creating websites and reusable component libraries
+- Content lives in simple markdown files
+- Components are packaged as runtime modules
+- Updates propagate instantly to all connected sites
+- Perfect for documentation, marketing sites, and more
 
-1. **Your Content** (using this template):
+**What makes it different?**
 
-   - Simple markdown files that define your content
-   - Easy-to-understand front matter for configuration
-   - Static assets like images and documents
-   - No coding required
-
-2. **A Component Library**:
-   - Pre-built collection of advanced React components
-   - Handles all technical implementation
-   - Provides sophisticated features and interactions
-   - Loaded automatically at runtime
-
-This separation of content and functionality is powered by [Uniweb's runtime module system](https://github.com/uniwebcms/component-library-template). Each component library is packaged as a runtime module that can be loaded dynamically by any Uniweb site. This architecture enables powerful workflows:
-
-- Content teams can work independently of design changes
-- Component updates instantly propagate to all sites using them
-- Sites can switch design systems while keeping their content unchanged
-- Developers can maintain and evolve components separately from content
-
-Everything is powered by the [Uniweb Runtime Environment (RTE)](https://github.com/uniwebcms/uniweb-rte), an open-source engine that handles routing, data management, and component loading.
-
-## Why Choose This Approach?
-
-The Uniweb Site Starter excels in several scenarios:
-
-- **Component Library Development**: If you're building Uniweb components, this provides the ideal testing environment. Create and test your libraries with real content before deploying them to production sites.
-
-- **Content-Focused Teams**: For teams who prefer working directly with markdown and Git, this provides a streamlined way to manage content using familiar developer tools.
-
-- **Technical Testing and Prototyping**: Whether you're evaluating Uniweb for a project or prototyping a new design system, this starter gives you hands-on experience with the core concepts.
-
-While this starter is perfect for markdown-based projects, teams needing visual editing tools, collaboration features, or advanced content management will love our [Uniweb CMS](https://uniwebcms.com). The CMS provides a complete no-code solution with translation management, team workflows, and enterprise features.
-
-## Component Libraries
-
-Component libraries define how your content appears and behaves. They provide the building blocks—from simple text components to complex interactive features—that bring your content to life. With Uniweb, you can:
-
-- Use any public component library
-- Create your own using our [component library template](https://github.com/uniwebcms/component-library-template)
-- Use commercial libraries from the Uniweb marketplace
-- Switch libraries without modifying your content
+- No rebuilding sites when components change
+- Clean separation of content from presentation
+- Share components across multiple sites
+- Instant preview of changes
 
 ## Getting Started
 
-Before you begin, you'll need:
+See it working in 2 minutes:
 
-- A component library URL (public or local development)
-- Node.js and npm installed
-- Basic familiarity with markdown and Git
+```bash
+# Create your project
+git clone https://github.com/uniwebcms/framework-starter my-project
+cd my-project
+yarn install
 
-Create your first Uniweb site:
+# Start development environment
+yarn uniweb start
 
-1. Create your site repository:
-
-   ```bash
-   # Use this template (recommended)
-   Click the "Use this template" button above
-
-   # Or clone directly
-   git clone https://github.com/uniwebcms/site-starter my-site
-   cd my-site
-   rm -rf .git
-   git init
-   ```
-
-2. Set up your development environment:
-   ```bash
-   npm install
-   npm run use <library-url>  # Link a component library
-   npm run dev               # Start development server
-   ```
-
-Visit `http://localhost:3000` to see your site in action! The development server includes hot reloading, so you'll see your content changes immediately.
-
-## Content Organization
-
-Your website's content is structured through markdown files, organized in a clear folder hierarchy:
-
-```
-my-site/
-├── pages/
-│   ├── home/          # Your home page
-│   │   ├── page.yml   # Page settings
-│   │   ├── 1-hero.md  # Hero section
-│   │   └── 2-main.md  # Main content
-│   ├── about/         # About page
-│   ├── @header/       # Global header (appears on all pages)
-│   ├── @footer/       # Global footer
-│   └── _drafts/       # Hidden during build
-└── public/            # Static assets
-    └── images/
+# Visit http://localhost:3000 to see:
+# - Example website
+# - Component library
+# - Development tools
 ```
 
-Each markdown file defines both its content and how it should be displayed:
+## Understanding Uniweb
+
+Traditional web development couples content tightly with code. Uniweb takes a different approach:
+
+```
+Traditional Approach        │  Uniweb Approach
+----------------------------│--------------------------------
+🏗️  Build-time compilation  │  🚀 Runtime loading
+🔨 Rebuild all sites        │  ⚡ Instant updates everywhere
+🔗 Coupled content & code   │  ✨ Clean separation
+📦 Complex dependencies     │  🎯 Single runtime module
+```
+
+### How It Works
+
+```
+         Your Sites                   Your Module
+┌─────────────────────────┐    ┌─────────────────────────┐
+│ Website 1               │    │                         │
+│ └─ Content (Markdown)   │    │    React Components     │
+│                         │    │    • Layouts            │
+│ Website 2               │    │    • Features           │
+│ └─ Content (Markdown)   │ ←──│    • Interactions       │
+│                         │    │                         │
+│ Website 3               │    │    Updates propagate    │
+│ └─ Content (Markdown)   │    │    instantly to all     │
+│                         │    │    connected sites      │
+└─────────────────────────┘    └─────────────────────────┘
+```
+
+## Building Websites
+
+Create content-driven websites using markdown and YAML:
 
 ```markdown
 ---
 component: Hero
 theme: light
-props:
-  layout: centered
 ---
 
 # Welcome to Our Site
 
-We believe in making website development both powerful and enjoyable...
+Building powerful websites should be enjoyable...
+```
+
+Your content connects to sophisticated components that handle the presentation. Learn more in our [Website Creation Guide](docs/website-guide.md).
+
+## Creating Modules
+
+Build reusable component libraries that power multiple sites:
+
+```javascript
+export default function Hero({ content, params }) {
+  const { theme = "light" } = params;
+  const { title, description } = content.main;
+
+  return (
+    <section className={`hero ${theme}`}>
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </section>
+  );
+}
+```
+
+Your components receive structured content and configuration. Learn more in our [Component Development Guide](docs/component-guide.md).
+
+## Development Tools
+
+The included development environment provides everything you need:
+
+- 🔄 Hot reloading for instant feedback
+- 🖼️ Asset management
+- 🎮 Auto build and deploy via GitHub Actions
+- 🔗 CMS connection to test with live sites
+- 📝 Comprehensive documentation website
+
+Advanced developers can connect their local development environment to a live Uniweb CMS site, enabling testing with real-world content and dynamic data. Learn more in our [Advanced Testing Guide](docs/advanced-testing.md).
+
+Learn more in our [Development Guide](docs/development-guide.md).
+
+## Choose Your Path
+
+Start with what you need:
+
+### Create a Website
+
+Perfect for:
+
+- Documentation sites
+- Marketing pages
+- Personal websites
+- Static content
+
+### Build a Module
+
+Perfect for:
+
+- Component libraries
+- Design systems
+- Custom features
+- Reusable layouts
+
+### Do Both
+
+Perfect for:
+
+- Testing components
+- Rapid prototyping
+- Complete solutions
+- Learning the framework
+
+You can even connect your local module development to a live Uniweb CMS site for testing with real-world content and data.
+
+## Project Structure
+
+```
+my-project/
+├── modules/         # Your runtime modules (optional)
+│   └── module1/     # A component library
+├── sites/           # Your websites (optional)
+│   └── site1/       # A website
+└── shared/          # Shared resources
 ```
 
 ## Deployment
 
-Build your site for production:
-
 ```bash
-npm run build
+# Build everything
+yarn uniweb build
+
+# Deploy to any static host
+yarn uniweb deploy
 ```
 
-The `dist` folder contains everything needed to deploy your site. Host it anywhere:
+Learn more in our [Deployment Guide](docs/deployment-guide.md).
 
-- GitHub Pages
-- Netlify
-- Vercel
-- Any static hosting service
+## Next Steps
 
-## Technical Details
+### Ready to Grow?
 
-For detailed information about page types, configuration options, and advanced features, see our [Technical Guide](docs/technical.md).
+As your needs evolve, consider [Uniweb CMS](https://uniwebcms.com) for a complete, hassle-free solution:
 
-## Join the Community
+```
+┌─ Uniweb Framework ─────┐    ┌─ Uniweb CMS ───────────────┐
+│                        │    │                            │
+│ • Markdown in files    │ => │ • Visual markdown editor   │
+│ • Manual asset upload  │ => │ • Drag-and-drop assets     │
+│ • Manual deployment    │ => │ • One-click publishing     │
+│ • BYO hosting          │ => │ • Built-in hosting         │
+│                        │    │ • Domain management        │
+└────────────────────────┘    └────────────────────────────┘
+```
 
-We're building something special, and we'd love for you to be part of it:
+The CMS provides everything you need:
 
-- 📘 [Documentation](https://link-to-docs)
-- 🌟 [GitHub Repository](https://github.com/uniweb/site-starter)
-- 🐛 [Report Issues](https://github.com/uniweb/site-starter/issues)
-- 💡 [Feature Requests](https://github.com/uniweb/site-starter/discussions)
+- Intuitive visual editor for markdown content
+- Simple drag-and-drop asset management
+- One-click publishing and hosting
+- Domain registration and management
+- Team collaboration tools
+- Content workflow management
+- Translation management
+- Enterprise features
+
+It's the easiest way to manage a Uniweb site while maintaining all the power and flexibility of the framework.
+
+### Learn More
+
+- [Component Guide](docs/component-guide.md)
+- [Website Guide](docs/website-guide.md)
+- [Development Guide](docs/development-guide.md)
+- [Deployment Guide](docs/deployment-guide.md)
+
+### Join the Community
+
+- [Discord](https://discord.gg/uniweb)
+- [Documentation](https://docs.uniweb.dev)
+- [Examples](https://github.com/uniwebcms/examples)
 
 ## License
 
-This starter repository is licensed under GPL-3.0-or-later.
-
-You are free to use and modify this repository, but if you distribute it (as a template or software package), you must also release your modifications under the same license.
-
-Note: Websites created using this starter are NOT considered distributions and do not need to be licensed under GPL.
+Licensed under GPL-3.0-or-later. You can freely use and modify this starter, but distributions must use the same license. Websites and modules created with this starter are not considered distributions.
 
 ---
 
-Built with ❤️ by the Uniweb Community. Want to learn more about what's possible with Uniweb? Visit us at [uniwebcms.com](https://uniwebcms.com).
+<div align="center">
+
+Built with ❤️ by the Uniweb Community
+
+[Website](https://uniweb.io) • [Documentation](https://docs.uniweb.dev) • [Discord](https://discord.gg/uniweb)
+
+</div>
