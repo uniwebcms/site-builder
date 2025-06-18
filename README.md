@@ -55,7 +55,7 @@ Traditional web development couples content tightly with code. Uniweb takes a di
 ```
 Traditional Approach        │  Uniweb Approach
 ----------------------------│--------------------------------
-🏗️  Build-time compilation  │  🚀 Runtime loading
+🏗️ Build-time compilation   │  🚀 Runtime loading
 🔨 Rebuild all sites        │  ⚡ Instant updates everywhere
 🔗 Coupled content & code   │  ✨ Clean separation
 📦 Complex dependencies     │  🎯 Single runtime module
@@ -162,14 +162,44 @@ You can even connect your local module development to a live Uniweb CMS site for
 
 ## Project Structure
 
+Different project structures are supported.
+
+**Multi-site configuration:**
+
 ```
 my-project/
 ├── modules/         # Your runtime modules (optional)
 │   └── module1/     # A component library
-├── sites/           # Your websites (optional)
-│   └── site1/       # A website
-└── shared/          # Shared resources
+└── sites/           # Your websites (optional)
+   └── site1/        # A website
 ```
+
+**Single-site configuration:**
+
+```
+my-project/
+├── pages/           # Website pages
+├── modules/         # Your runtime modules (optional)
+│   └── module1/     # A component library
+├── public/          # Public website assets
+├── src/             # Entry files for the website
+└── site.yml         # Website settings
+```
+
+These commands can be used to create sites and modules:
+
+```bash
+# Create a site in the `sites` folder
+yarn uniweb create site --name site1
+
+# Create a site at the project's root level
+yarn uniweb create site --root
+
+# Create a module in the `modules` folder
+yarn uniweb create module --name module1
+```
+
+Learn more about available commands in the [CLI Guide](docs/cli-guide.md).
 
 ## Deployment
 
